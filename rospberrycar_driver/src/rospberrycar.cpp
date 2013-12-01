@@ -61,7 +61,7 @@ uint8_t ROSpberryCar::sendSPI(int8_t linear_velocity, int8_t angular_velocity,
 
     if(ask_data_bit || ask_firmware_version)
     {
-        usleep(20000);
+        usleep(2000);
 
         ROSCASDataFromSTELLARIS received;
         received.battery_voltage = 0;
