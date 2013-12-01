@@ -104,15 +104,15 @@ uint8_t ROSpberryCar::sendSPI(int8_t linear_velocity, int8_t angular_velocity,
 float ROSpberryCar::getStellarisFirmwareVersion(void)
 {
     uint8_t temp = sendSPI(0,0,FAST_DECAY_COAST,0,1,1);
-return stellarisFirmwareVersion_;
-//     if(!temp)
-//     {
-//         return stellarisFirmwareVersion_;
-//     }
-//     else
-//     {
-//         return -1.0;
-//     }
+    
+    if(!temp)
+    {
+        return stellarisFirmwareVersion_;
+    }
+    else
+    {
+        return -1.0;
+    }
 }
 
 void ROSpberryCar::drive(int8_t linear_velocity, int8_t angular_velocity, HBridgeDriveMode mode)
