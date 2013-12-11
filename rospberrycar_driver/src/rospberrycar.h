@@ -22,22 +22,20 @@ typedef enum
     FAST_DECAY_COAST = 0, SLOW_DECAY_BRAKE
 }HBridgeDriveMode;
 
-typedef struct ROSCASDataToSTELLARIS_
+typedef struct __attribute__((__packed__)ROSCASDataToSTELLARIS_
 {
     int8_t v_linear;
     int8_t v_angular;
-    
     uint8_t cmd;		// 0b <blinky_bit> <ask_data_bit> <HBridgeDriveMode> <ask_firmware_bit> <0> <0> <0> <start_stop_car_bit>
+    
 }ROSCASDataToSTELLARIS;
 
-typedef struct ROSCASDataFromSTELLARIS_
+typedef struct __attribute__((__packed__)ROSCASDataFromSTELLARIS_
 {
     int32_t left_encoder_count;
     int32_t right_encoder_count;
     uint8_t battery_voltage;
     uint8_t battery_current;
-
-    uint8_t cenas;
     uint8_t cmd_back;
     
 }ROSCASDataFromSTELLARIS;
