@@ -26,13 +26,13 @@ bool ROSpberryCar::initialize(string dev_path)
         return 1;
     }
 
-    //startSPICommThread();
+    startSPICommThread();
     return 0;
 }
 
 bool ROSpberryCar::deInitialize()
 {
-    //comm_thread_->join();
+    comm_thread_->join();
 }
 
 uint8_t ROSpberryCar::sendSPI(int8_t linear_velocity, int8_t angular_velocity,
@@ -123,7 +123,9 @@ void ROSpberryCar::drive(int8_t linear_velocity, int8_t angular_velocity, HBridg
 
 float ROSpberryCar::getROSpberryCarBatteryVoltage(bool force_new_data)
 {
-
+    if(force_new_data)
+    {
+	
 }
 
 float ROSpberryCar::getROSpberryCarBatteryCurrent(bool force_new_data)
@@ -131,12 +133,12 @@ float ROSpberryCar::getROSpberryCarBatteryCurrent(bool force_new_data)
 
 }
 
-int16_t ROSpberryCar::getROSpberryCarLeftEncoder(bool force_new_data)
+int32_t ROSpberryCar::getROSpberryCarLeftEncoder(bool force_new_data)
 {
 
 }
 
-int16_t ROSpberryCar::getROSpberryCarRightEncoder(bool force_new_data)
+int32_t ROSpberryCar::getROSpberryCarRightEncoder(bool force_new_data)
 {
 
 }
