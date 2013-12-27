@@ -1,0 +1,11 @@
+CMakeLists.txt
+**/devel/*
+**/lib/*
+**/build/*
+*.user
+*.bak
+*.*~
+*.txt.autosave
+build/*
+devel/*
+
