@@ -156,6 +156,7 @@ void ROSpberryCar::send_twist_cmd(float linear_velocity, float angular_velocity,
     new_angular_vel_ = (int8_t)::map(angular_velocity, -MAX_ANGULAR_VEL, MAX_ANGULAR_VEL, -MAX_RAW_ANGULAR_VEL, MAX_RAW_ANGULAR_VEL);
     new_mode_ = mode;
     last_twist_time_ = ros::Time::now();
+    ROS_INFO("new vel l=%d a=%d", new_linear_vel_, new_angular_vel_);
 }
 
 float ROSpberryCar::getROSpberryCarBatteryVoltage(bool force_new_data)

@@ -62,5 +62,5 @@ int main(int argc, char** argv)
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel)
 {
-    Ferrari.send_twist_cmd(cmd_vel->linear.x * 10.0, cmd_vel->angular.z*5.0, FAST_DECAY_COAST);
+    Ferrari.send_twist_cmd(cmd_vel->linear.x * 1.0, cmd_vel->angular.z*5.0, FAST_DECAY_COAST);
 }
