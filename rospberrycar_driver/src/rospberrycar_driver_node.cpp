@@ -44,16 +44,8 @@ int main(int argc, char** argv)
         ROS_BREAK();
     }
     ROS_INFO("ROSpberryCar: Correct firmware version (v: %f).", mcu_version);
-
-    ros::Rate r(10);
-    ros::Time start_time = ros::Time::now();
     
-    while(n.ok())
-    {
-        //Ferrari.drive(0,0);
-        ros::spinOnce();
-        r.sleep();
-    }
+    ros::spin();
 
     Ferrari.deInitialize();
     
