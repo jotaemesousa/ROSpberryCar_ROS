@@ -23,9 +23,9 @@ int main(int argc, char** argv)
     string spi_dev_path;
     pn.param<std::string>("spi_dev_path", spi_dev_path, "/dev/spidev0.0");
     double stellaris_version;
-    pn.param("stellaris_version", stellaris_version, 1.0);
+    pn.param("stellaris_version", stellaris_version, 1.1);
 
-    ros::Subscriber cmd_vel_sub = n.subscribe<geometry_msgs::Twist>("cmd_vel", 10, cmdVelReceived);
+    ros::Subscriber cmd_vel_sub = n.subscribe<geometry_msgs::Twist>("/teleop/cmd_vel", 10, cmdVelReceived);
     ros::Publisher status_pub = n.advertise<rospberrycar_msgs::Status>("rospberrycar/status", 10);
 
     // Open SPI channel
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     ROS_INFO("ROSpberryCar: Initialize complete.");
 
     // Get Stellaris firmware version
-    double mcu_version = Ferrari.getStellarisFirmwareVersion();
+        double mcu_version = Ferrari.getStellarisFirmwareVersion();
     if(mcu_version != stellaris_version)
     {
         ROS_FATAL("ROSpberryCar: Stellaris version %f is incompatible with ROS driver (%f needed).\n", mcu_version, stellaris_version);
@@ -62,5 +62,5 @@ int main(int argc, char** argv)
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel)
 {
-
+    Ferrari.send_twist_cmd(cmd_vel->linear.x * 10.0, cmd_vel->angular.z*5.0, FAST_DECAY_COAST);
 }
