@@ -34,9 +34,9 @@ typedef enum
 typedef struct __attribute__((__packed__)ROSCASDataToSTELLARIS_
 {
     int8_t v_linear;
-    int8_t v_angular;
-    
+    int8_t v_angular;    
     uint8_t cmd;		// 0b <blinky_bit> <ask_data_bit> <HBridgeDriveMode> <ask_firmware_bit> <0> <0> <0> <start_stop_car_bit>
+    uint8_t useless;
 }ROSCASDataToSTELLARIS;
 
 typedef struct __attribute__((__packed__)ROSCASDataFromSTELLARIS_
@@ -46,7 +46,7 @@ typedef struct __attribute__((__packed__)ROSCASDataFromSTELLARIS_
     uint8_t battery_voltage;
     uint8_t battery_current;
     uint8_t cmd_back;
-    
+    uint8_t useless;
 }ROSCASDataFromSTELLARIS;
 
 //! Macro for defining an exception with a given parent (std::runtime_error should be top parent)

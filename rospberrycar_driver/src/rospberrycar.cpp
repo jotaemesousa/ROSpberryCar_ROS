@@ -90,7 +90,7 @@ uint8_t ROSpberryCar::sendSPI(int8_t linear_velocity, int8_t angular_velocity,
 
     if(ask_data_bit || ask_firmware_version)
     {
-	usleep(200);
+	usleep(500);
         ROSCASDataFromSTELLARIS received;
         received.battery_voltage = 0;
         received.battery_current = 0;
@@ -109,9 +109,14 @@ uint8_t ROSpberryCar::sendSPI(int8_t linear_velocity, int8_t angular_velocity,
   //ROS_INFO("%d, %d",received.cmd_back,cmd_vel.cmd);
         if((received.cmd_back & BLINKY_BIT) != (cmd_vel.cmd & BLINKY_BIT))
         {
+	  for(int i = 0; i < sizeof(ROSCASDataFromSTELLARIS); i++)
+	  {
+	     ROS_INFO("%d, %d",i,*(p_rec + i));
+	  }
 
             ROS_ERROR("Sync. error.");
-            return 1;
+	    ROS_BREAK();
+	    return 1;
         }
         else
         {
