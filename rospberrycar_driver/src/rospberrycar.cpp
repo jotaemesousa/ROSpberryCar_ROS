@@ -30,7 +30,7 @@ ROSpberryCar::~ROSpberryCar()
 {
 }
 
-bool ROSpberryCar::initialize(string dev_path)
+bool ROSpberryCar::initialize(string dev_path, float rate)
 {
     fd_ = open(dev_path.c_str(), O_RDWR);
 
@@ -52,7 +52,7 @@ bool ROSpberryCar::initialize(string dev_path)
         return 1;
     }
 
-    startSPICommThread();
+    startSPICommThread(rate);
     return 0;
 }
 

@@ -49,10 +49,11 @@ int main(int argc, char** argv)
 
     Ferrari.deInitialize();
     
+    ROS_INFO("ROSpberryCar: Communication stoped.");
     return 0;
 }
 
 void cmdVelReceived(const geometry_msgs::Twist::ConstPtr& cmd_vel)
 {
-    Ferrari.send_twist_cmd(cmd_vel->linear.x * 1.0, cmd_vel->angular.z*5.0, FAST_DECAY_COAST);
+    Ferrari.send_twist_cmd(cmd_vel->linear.x * 2.0, cmd_vel->angular.z*5.0, FAST_DECAY_COAST);
 }

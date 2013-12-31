@@ -70,7 +70,7 @@ public:
     ROSpberryCar();
     ~ROSpberryCar();
     
-    bool initialize(string dev_path);
+    bool initialize(string dev_path, float rate = 10.0);
     bool deInitialize();
     
     void send_twist_cmd(float linear_velocity, float angular_velocity,
